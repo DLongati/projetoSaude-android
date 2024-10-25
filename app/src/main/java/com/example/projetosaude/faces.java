@@ -22,6 +22,7 @@ public class faces extends AppCompatActivity {
     private CheckBox[] checkBoxesGroup1;
     private CheckBox[] checkBoxesGroup2;
     private Button btnEnviar;
+    private Button btnTelaInicio;
 
     private enum GroupLimit {
         GROUP_1(2),
@@ -56,6 +57,8 @@ public class faces extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MeuApp", MODE_PRIVATE);
         String telefone = sharedPreferences.getString("telefoneUsuario", "Telefone não informado");
 
+
+
         imgFaces = findViewById(R.id.imgFaces);
         checkBoxesGroup1 = new CheckBox[] {
                 findViewById(R.id.chMFeliz),
@@ -79,6 +82,9 @@ public class faces extends AppCompatActivity {
 
         setupCheckBoxListeners(checkBoxesGroup1, GroupLimit.GROUP_1.limit);
         setupCheckBoxListeners(checkBoxesGroup2, GroupLimit.GROUP_2.limit);
+
+        btnTelaInicio = findViewById(R.id.btnTelaInicio);
+        btnTelaInicio.setOnClickListener(v -> onVoltarParaTelaInicial());
     }
 
     private void setupCheckBoxListeners(CheckBox[] checkBoxes, int limit) {
@@ -117,6 +123,11 @@ public class faces extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Por favor, respeite os limites de seleção.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void onVoltarParaTelaInicial() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void checkSelection() {
