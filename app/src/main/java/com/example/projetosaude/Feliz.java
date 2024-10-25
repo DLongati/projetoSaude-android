@@ -58,7 +58,7 @@ public class Feliz extends AppCompatActivity {
         });
     }
 
-    // Método para recuperar o nome do usuário
+    // Método para recuperar o nome do usuárioG
     private String getNomeUsuario() {
         SharedPreferences sharedPreferences = getSharedPreferences("MeuApp", MODE_PRIVATE);
         return sharedPreferences.getString("nomeUsuario", "Usuário");
